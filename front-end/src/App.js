@@ -70,11 +70,11 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <h1>Hello world</h1>
+        <h1>Spaces</h1>
 
         <form onSubmit={this.createDesk}>
-          <input type="text" onKeyUp={this.changeNewUsername}/>
-          <input type="text" onKeyUp={this.changeNewImage}/>
+          <input type="text" placeholder="name" onKeyUp={this.changeNewUsername}/>
+          <input type="text" placeholder="image url" onKeyUp={this.changeNewImage}/>
           <input type="submit" value="Add Desk"/>
         </form>
 

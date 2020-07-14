@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const pool = require('./database.js')
+const desk_pool = require('./database.js')
 const PORT = 5000
 
 // Middleware
@@ -21,7 +21,7 @@ app.use(express.static('public'))
 app.post('/desks', async (req, res) => {
   try {
     const { username, image } = req.body
-    const newDesk = await pool.query("INSERT INTO desks (username, image) VALUES($1, $2) RETURNING *",
+    const newDesk = await desk_pool.query("INSERT INTO desks (username, image) VALUES($1, $2) RETURNING *",
     [username, image])
     res.json(newDesk.rows)
   } catch (err) {
@@ -32,7 +32,7 @@ app.post('/desks', async (req, res) => {
 // READ
 app.get('/desks', async (req, res) => {
   try {
-    const allDesks = await pool.query("SELECT * FROM desks")
+    const allDesks = await desk_pool.query("SELECT * FROM desks")
     res.json(allDesks.rows)
   } catch (err) {
     console.log(err)
@@ -42,7 +42,7 @@ app.get('/desks', async (req, res) => {
 app.get('/desks/:id', async (req, res) => {
   try {
     const { id } = req.params
-    const desk = await pool.query("SELECT * FROM desks WHERE id = $1", [id])
+    const desk = await desk_pool.query("SELECT * FROM desks WHERE id = $1", [id])
     res.json(desk.rows[0])
   } catch (err) {
     console.log(err)
@@ -54,7 +54,7 @@ app.put('/desks/:id', async (req, res) => {
   try {
     const { id } = req.params
     const { username, image } = req.body
-    const updateDesk = await pool.query(
+    const updateDesk = await desk_pool.query(
       "UPDATE desks SET username = $1, image = $2 WHERE id = $3 RETURNING *",
       [username, image, id]
     )
@@ -69,8 +69,8 @@ app.put('/desks/:id', async (req, res) => {
 app.delete('/desks/:id', async (req, res) => {
   try {
     const { id } = req.params
-    const deleteDesk = await pool.query("DELETE FROM desks WHERE id = $1 RETURNING *", [id])
-    
+    const deleteDesk = await desk_pool.query("DELETE FROM desks WHERE id = $1 RETURNING *", [id])
+
   } catch (err) {
     console.log(err)
   }
