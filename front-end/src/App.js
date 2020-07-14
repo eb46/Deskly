@@ -1,13 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 import Edit from './components/Edit.js'
+import Login from './components/Login.js'
 
 class App extends React.Component {
 
   state = {
     desks: [],
+    users: [],
     username: '',
-    image: ''
+    image: '',
+    user_name: '',
+    user_email: '',
+    user_password: ''
   }
 
   refreshPage = () => {
@@ -71,7 +76,7 @@ class App extends React.Component {
     return(
       <div>
         <h1>Spaces</h1>
-
+        <Login />
         <form onSubmit={this.createDesk}>
           <input type="text" placeholder="name" onKeyUp={this.changeNewUsername}/>
           <input type="text" placeholder="image url" onKeyUp={this.changeNewImage}/>

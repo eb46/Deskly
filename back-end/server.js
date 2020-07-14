@@ -1,7 +1,6 @@
 // Dependencies
 const express = require('express')
 const cors = require('cors')
-const desk_pool = require('./database.js')
 const session = require('express-session')
 
 // Configuration
@@ -18,8 +17,8 @@ app.use(express.static('public'))
 const deskController = require('./controllers/desk_controller.js')
 app.use('/', deskController)
 
-// const usersController = require('./controllers/users_controller.js')
-// app.use('/users', usersController)
+const usersController = require('./controllers/users_controller.js')
+app.use('/users', usersController)
 //
 // const sessionsController = require('./controllers/sessions_controller.js')
 // app.use('/sessions', sessionsController)

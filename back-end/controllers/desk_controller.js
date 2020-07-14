@@ -1,12 +1,11 @@
 // Dependencies
 const express = require('express')
-const desk = express.Router()
 const cors = require('cors')
 const desk_pool = require('../database.js')
 
-
 // Configuration
 const app = express()
+const desk = express.Router()
 
 // Middleware
 app.use(cors())
@@ -70,7 +69,7 @@ desk.delete('/desks/:id', async (req, res) => {
   try {
     const { id } = req.params
     const deleteDesk = await desk_pool.query("DELETE FROM desks WHERE id = $1 RETURNING *", [id])
-
+    // res.json(deleteDesk.rows)
   } catch (err) {
     console.log(err)
   }
