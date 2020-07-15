@@ -19,10 +19,11 @@ app.use(express.static('public'))
 // CREATE
 users.post('/', async (req, res) => {
   try {
-    req.body.user_password = bcrypt.hashSync(req.body.user_password, bcrypt.genSaltSync(10))
+    const bcryptPass = await bcrypt.hashSync(req.body.user_password, bcrypt.genSaltSync(10))
+    console.log(bcryptPass);
     const { user_name, user_email, user_password } = req.body
-    const newUser = await user_pool.query("INSERT INTO users (user_name, user_email, user_password) VALUES($1, $2, $3)", [user_name, user_email, user_password])
-    res.json(newUser.rows)
+    const newUser = await user_pool.query("INSERT INTO users (user_name, user_email, user_password) VALUES($1, $2, $3) RETURNING *", [user_name, user_email, bcryptPass])
+    res.json(newUser.rows[0])
   } catch (err) {
     console.log(err);
   }

@@ -3,56 +3,54 @@ import axios from 'axios'
 
 class Login extends React.Component {
   state = {
-    users: []
+    user_name: '',
+    user_email: '',
+    user_password: ''
   }
 
-  // CREATE
-    createUser = (event) => {
-      axios.post('http://localhost:5000/users',
-        {
-          user_name: this.state.newUsername,
-          user_email: this.state.newEmail,
-          user_password: this.state.newPassword
-        }
-      ).then((response) => {
-          this.setState({
-            users: response.data
-          })
-      })
-    }
-
-    changeNewUsername = (event) => {
+  loginUser = (event) => {
+    axios.post('http://localhost:5000/sessions',
+      {
+        user_name: this.state.loginUsername,
+        user_email: this.state.loginEmail,
+        user_password: this.state.loginPassword
+      }
+    ).then((response) => {
       this.setState({
-        newUsername: event.target.value
+        users: response.data
       })
-    }
+    })
+  }
 
-    changeNewEmail = (event) => {
-      this.setState({
-        newEmail: event.target.value
-      })
-    }
+  changeLoginUser = (event) => {
+    this.setState({
+      loginUsername: event.target.value
+    })
+  }
 
-    changeNewPassword = (event) => {
-      this.setState({
-        newPassword: event.target.value
-      })
-    }
+  changeLoginEmail = (event) => {
+    this.setState({
+      loginEmail: event.target.value
+    })
+  }
 
-    render () {
-      return(
-        <div>
+  changeLoginPassword = (event) => {
+    this.setState({
+      loginPassword: event.target.value
+    })
+  }
 
-          <form onSubmit={this.createUser}>
-            <input type="text" placeholder="username" onKeyUp={this.changeNewUsername}/>
-            <input type="text" placeholder="email address" onKeyUp={this.changeNewEmail}/>
-            <input type="text" placeholder="password" onKeyUp={this.changeNewPassword}/>
-            <input type="submit" value="Create User"/>
-          </form>
-
-        </div>
-      )
-    }
+  render () {
+    return (
+      <div>
+        <form onSubmit={this.loginUser}>
+          <input type="text" placeholder="email" onKeyUp={this.changeLoginEmail}/>
+          <input type="text" placeholder="password" onKeyUp={this.changeLoginPassword}/>
+          <input type="submit" value="Login"/>
+        </form>
+      </div>
+    )
+  }
 }
 
 export default Login

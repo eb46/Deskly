@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Edit from './components/Edit.js'
 import Login from './components/Login.js'
+import Signup from './components/Signup.js'
 
 class App extends React.Component {
 
@@ -76,7 +77,11 @@ class App extends React.Component {
     return(
       <div>
         <h1>Spaces</h1>
+
+        Welcome {this.state.user_name}!
         <Login />
+        <Signup />
+
         <form onSubmit={this.createDesk}>
           <input type="text" placeholder="name" onKeyUp={this.changeNewUsername}/>
           <input type="text" placeholder="image url" onKeyUp={this.changeNewImage}/>
