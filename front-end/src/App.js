@@ -78,7 +78,6 @@ class App extends React.Component {
       <div>
         <h1>Spaces</h1>
 
-        Welcome {this.state.user_name}!
         <Login />
         <Signup />
 
