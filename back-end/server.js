@@ -15,7 +15,7 @@ app.use(express.static('public'))
 
 app.use(session({
   secret:'idkwhatimdoing',
-  resave: false,
+  resave: true,
   saveUninitialized: false
 }))
 

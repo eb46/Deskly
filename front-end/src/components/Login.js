@@ -4,9 +4,19 @@ import axios from 'axios'
 class Login extends React.Component {
   state = {
     loggedIn: false,
-    user_name: '',
-    user_email: '',
-    user_password: ''
+    user_name: null,
+    user_email: null,
+    user_password: null,
+    session: {}
+  }
+
+  componentDidMount = () => {
+    axios.get('http://localhost:5000/sessions').then(
+      (response) => {
+        this.setState({
+          session: response.data,
+        })
+    })
   }
 
   loginUser = (event) => {
@@ -18,11 +28,14 @@ class Login extends React.Component {
         user_password: this.state.loginPassword
       }
     ).then((response) => {
+      console.log('=========');
+      console.log(response.data);
       this.setState({
         session: response.data,
         loggedIn: true
       })
-      console.log(this.state.session);
+      console.log(this.state.loggedIn);
+      // console.log(this.state.session);
     })
   }
 
@@ -48,28 +61,32 @@ class Login extends React.Component {
     axios.delete('http://localhost:5000/sessions')
       .then((response) => {
         this.setState({
-          loggedIn: false
+          loggedIn: false,
         })
+        // console.log(response.data.destroyed);
+        if (response.data.destroyed === true){
+          console.log('session destroyed');
+        }
+        // console.log(this.state.session.rows[0].user_name);
       })
-
-
-    console.log('deleting...');
-    console.log(this.state.session.rows[0].user_name);
-  }
+    }
 
   render () {
     return (
       <div>
+
         { this.state.loggedIn
           ?
             <div>
               <h3>
-                Welcome {this.state.session.rows[0].user_name}!!!
+                Welcome {this.state.session.user.rows[0].user_name}!!!
               </h3>
               <button onClick={this.logoutUser}>Logout</button>
             </div>
           :
+
           <form onSubmit={this.loginUser}>
+          <h1>Login</h1>
             <input type="text" placeholder="email" onKeyUp={this.changeLoginEmail}/>
             <input type="text" placeholder="password" onKeyUp={this.changeLoginPassword}/>
             <input type="submit" value="Login"/>

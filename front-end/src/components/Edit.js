@@ -51,8 +51,8 @@ class Edit extends React.Component {
     return(
       <div>
 
-        <button onClick={this.toggleEditForm}>
-          <img src="https://img.icons8.com/metro/26/000000/edit-row.png"/>
+        <button className="btn btn-dark" onClick={this.toggleEditForm}>
+          Edit
         </button>
 
         { this.state.editForm

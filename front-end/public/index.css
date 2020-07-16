@@ -1,0 +1,17 @@
+.desk-image {
+  width: 250px;
+  height: 300px;
+}
+
+body {
+  background-color: gray;
+}
+
+/* .desk-cards {
+  display: flex;
+  flex-direct: column;
+} */
+
+.title {
+  color: white;
+}

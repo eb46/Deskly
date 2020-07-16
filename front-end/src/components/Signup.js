@@ -43,6 +43,8 @@ class Signup extends React.Component {
       return (
         <div>
 
+          <h1>Sign-up</h1>
+
           <form onSubmit={this.createUser}>
             <input type="text" placeholder="username" onKeyUp={this.changeNewUsername}/>
             <input type="text" placeholder="email address" onKeyUp={this.changeNewEmail}/>
