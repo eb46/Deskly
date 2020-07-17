@@ -1,0 +1,74 @@
+// Submit for for desks
+// <form onSubmit={this.createDesk}>
+//   <input type="text" placeholder="name" onKeyUp={this.changeNewUsername}/>
+//   <input type="text" placeholder="image url" onKeyUp={this.changeNewImage}/>
+//   <input type="submit" value="Add Desk"/>
+// </form>
+
+
+// Read all for desks
+// {this.state.desks.map((desk, index) => {
+//   return <div className="desk-cards">
+//     <img className="img-fluid mx-auto d-block" src={desk.image} />
+//     <p>Submitted by: {desk.username}</p>
+//     <div className="desk-card-buttons">
+//       <Edit className="edit-button" desks={desk} />
+//       <button className="delete-button btn btn-dark" value={desk.id} onClick={this.deleteDesk}>
+//         Delete
+//       </button>
+//     </div>
+//   </div>
+//
+// })}
+
+
+// CREATE
+// createDesk = (event) => {
+//   axios.post('http://localhost:5000/desks',
+//     {
+//       username: this.state.newUsername,
+//       image: this.state.newImage
+//     }
+//   ).then((response) => {
+//     this.setState({
+//       desks: response.data
+//     })
+//     console.log(response.data);
+//   })
+// }
+
+// changeNewUsername = (event) => {
+//   this.setState({
+//     newUsername: event.target.value
+//   })
+// }
+//
+// changeNewImage = (event) => {
+//   this.setState({
+//     newImage: event.target.value
+//   })
+// }
+
+// componentDidMount = () => {
+//   axios.get('http://localhost:5000/desks').then(
+//     (response) => {
+//       this.setState({
+//         desks: response.data
+//       })
+//   })
+// }
+//
+// // DELETE
+// deleteDesk = (event) => {
+//   const id = event.target.value
+//   axios.delete('http://localhost:5000/desks/' + id).then(
+//     (response) => {
+//       this.setState(
+//         {
+//           desks: response.data
+//         }
+//       )
+//     }
+//   )
+//   this.refreshPage()
+// }
