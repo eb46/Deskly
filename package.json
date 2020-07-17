@@ -1,6 +1,7 @@
 {
   "name": "front-end",
   "version": "0.1.0",
+  "proxy": "https://deskly-backend.herokuapp.com/",
   "private": true,
   "engines": {
     "node": "12.16.2",
