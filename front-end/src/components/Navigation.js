@@ -7,8 +7,8 @@ class Navigation extends React.Component {
     return (
       <nav>
         <Link to="/login">Login</Link>
-        <br/>
         <Link to="/signup">Signup</Link>
+        <Link to="/">Add</Link>
       </nav>
     )
   }

@@ -4,14 +4,29 @@
 }
 
 body {
-  background-color: gray;
+
 }
 
-/* .desk-cards {
+.desk-cards {
+  border: 1px solid rgb(200, 200, 200);
+  margin-bottom: 1em;
   display: flex;
-  flex-direct: column;
-} */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* align-content: center; */
+}
+
+.desk-card-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+.delete-button {
+  margin-left: 5px;
+}
 
 .title {
-  color: white;
+  color: black;
 }

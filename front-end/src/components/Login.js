@@ -16,8 +16,8 @@ class Login extends React.Component {
         this.setState({
           session: response.data,
         })
-    })
-  }
+      })
+    }
 
   loginUser = (event) => {
     event.preventDefault()
