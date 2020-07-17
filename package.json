@@ -1,5 +1,6 @@
 {
-  "name": "front-end",
+  "name": "Deskly",
+  "homepage":".",
   "version": "0.1.0",
   "proxy": "https://deskly-backend.herokuapp.com/",
   "private": true,
