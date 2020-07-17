@@ -1,7 +1,6 @@
 {
   "name": "Deskly",
   "version": "0.1.0",
-  "homepage": "https://deskly.herokuapp.com/",
   "proxy":"https://deskly-backend.herokuapp.com/",
   "engines": {
     "node": "12.16.2",
