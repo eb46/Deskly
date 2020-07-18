@@ -31,7 +31,7 @@ class App extends React.Component {
         desks: response.data
       }))
   }
-
+ 
   componentDidMount(){
     this.getDesks()
   }
