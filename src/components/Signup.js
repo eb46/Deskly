@@ -8,7 +8,7 @@ class Signup extends React.Component {
 
   // CREATE
     createUser = (event) => {
-      axios.post('http://localhost:5000/users',
+      axios.post('/users',
         {
           user_name: this.state.newUsername,
           user_email: this.state.newEmail,

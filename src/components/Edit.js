@@ -13,7 +13,7 @@ class Edit extends React.Component {
   // UPDATE
   updateDesk = (event) => {
     const id = event.target.getAttribute('id')
-    axios.put('http://localhost:5000/desks/' + id,
+    axios.put('/desks/' + id,
       {
         username: this.state.updateUsername,
         image: this.state.updateImage

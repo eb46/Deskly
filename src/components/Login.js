@@ -11,7 +11,7 @@ class Login extends React.Component {
   }
 
   componentDidMount = () => {
-    axios.get('http://localhost:5000/sessions').then(
+    axios.get('/sessions').then(
       (response) => {
         this.setState({
           session: response.data,
@@ -21,7 +21,7 @@ class Login extends React.Component {
 
   loginUser = (event) => {
     event.preventDefault()
-    axios.post('http://localhost:5000/sessions',
+    axios.post('/sessions',
       {
         user_name: this.state.loginUsername,
         user_email: this.state.loginEmail,
@@ -58,7 +58,7 @@ class Login extends React.Component {
   }
 
   logoutUser = (event) => {
-    axios.delete('http://localhost:5000/sessions')
+    axios.delete('/sessions')
       .then((response) => {
         this.setState({
           loggedIn: false,
