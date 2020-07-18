@@ -64,8 +64,34 @@ class App extends React.Component {
       this.getDesks()
     }
 
+  componentDidMount = () => {
+    axios.get('http://localhost:5000/sessions').then(
+      (response) => {
+        this.setState({
+          session: response.data,
+        })
+      })
+    }
 
-  // LOGIN
+  loginUser = (event) => {
+    event.preventDefault()
+    axios.post('http://localhost:5000/sessions',
+      {
+        user_name: this.state.loginUsername,
+        user_email: this.state.loginEmail,
+        user_password: this.state.loginPassword
+      }
+    ).then((response) => {
+      console.log('=========');
+      console.log(response.data);
+      this.setState({
+        session: response.data,
+        loggedIn: true
+      })
+      console.log(this.state.loggedIn);
+      // console.log(this.state.session);
+    })
+  }
 
   changeLoginUser = (event) => {
     this.setState({
@@ -86,7 +112,7 @@ class App extends React.Component {
   }
 
   logoutUser = (event) => {
-    axios.delete('/sessions')
+    axios.delete('http://localhost:5000/sessions')
       .then((response) => {
         this.setState({
           loggedIn: false,
@@ -97,17 +123,32 @@ class App extends React.Component {
         }
         // console.log(this.state.session.rows[0].user_name);
       })
-
-
-    console.log('deleting...');
-  }
+    }
 
   render() {
     return(
       <Router>
         <div className="container">
           <h1 className="title">Deskly</h1>
+          <div>
 
+            { this.state.loggedIn
+              ?
+                <div>
+                  <h3>
+                    Welcome {this.state.session.user.rows[0].user_name}!!!
+                  </h3>
+                  <button onClick={this.logoutUser}>Logout</button>
+                </div>
+              :
+              <form onSubmit={this.loginUser}>
+              <h1>Login</h1>
+                <input type="text" placeholder="email" onKeyUp={this.changeLoginEmail}/>
+                <input type="text" placeholder="password" onKeyUp={this.changeLoginPassword}/>
+                <input type="submit" value="Login"/>
+              </form>
+            }
+          </div>
           <div className="nav-container">
             <Navigation />
             <Route path="/login" exact component={Login}/>
