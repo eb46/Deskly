@@ -24,16 +24,19 @@ class App extends React.Component {
     loggedIn: false,
   }
 
+
+
+  componentDidMount = () => {
+    this.getDesks()
+    console.log(this.state.desks);
+  }
+
   getDesks = () => {
     axios
       .get('https://deskly-backend.herokuapp.com/desks')
       .then(response => this.setState({
         desks: response.data
       }))
-  }
-
-  componentDidMount(){
-    this.getDesks()
   }
 
   componentDidMount = () => {
