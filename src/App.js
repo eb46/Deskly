@@ -24,10 +24,6 @@ class App extends React.Component {
     loggedIn: false,
   }
 
-  componentDidMount = () => {
-    this.getDesks()
-  }
-
   getDesks = () => {
     axios
       .get('/desks')
@@ -36,21 +32,34 @@ class App extends React.Component {
       }))
   }
 
+  componentDidMount(){
+    this.getDesks()
+  }
+
+  componentDidMount = () => {
+    axios.get('/sessions').then(
+      (response) => {
+        this.setState({
+          session: response.data,
+        })
+      })
+    }
+
   handleAdd = (event, formInputs) => {
     axios
       .post('/desks', formInputs)
       .then(jsonDesks =>
         this.setState({
         desks: [jsonDesks.data, ...this.state.desks]
-      }
+        }
+      )
     )
-  )
-  this.getDesks()
+    this.getDesks()
   }
 
   handleDelete = deletedDesk => {
     axios
-      .delete(`/desks/${deletedDesk.id}`)
+      .delete('/desks/' + deletedDesk.id)
       .then(() => {
         this.setState(state => {
           const desks = state.desks.filter((desk) => {
@@ -62,20 +71,12 @@ class App extends React.Component {
       .catch(error => console.log(error)
       )
       this.getDesks()
-    }
-
-  componentDidMount = () => {
-    axios.get('http://localhost:5000/sessions').then(
-      (response) => {
-        this.setState({
-          session: response.data,
-        })
-      })
+      console.log('deleting');
     }
 
   loginUser = (event) => {
     event.preventDefault()
-    axios.post('http://localhost:5000/sessions',
+    axios.post('/sessions',
       {
         user_name: this.state.loginUsername,
         user_email: this.state.loginEmail,
@@ -112,7 +113,7 @@ class App extends React.Component {
   }
 
   logoutUser = (event) => {
-    axios.delete('http://localhost:5000/sessions')
+    axios.delete('/sessions')
       .then((response) => {
         this.setState({
           loggedIn: false,
