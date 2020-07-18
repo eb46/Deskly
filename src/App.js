@@ -26,18 +26,18 @@ class App extends React.Component {
 
   getDesks = () => {
     axios
-      .get('/desks')
+      .get('https://deskly-backend.herokuapp.com/desks')
       .then(response => this.setState({
         desks: response.data
       }))
   }
- 
+
   componentDidMount(){
     this.getDesks()
   }
 
   componentDidMount = () => {
-    axios.get('/sessions').then(
+    axios.get('https://deskly-backend.herokuapp.com/sessions').then(
       (response) => {
         this.setState({
           session: response.data,
@@ -47,7 +47,7 @@ class App extends React.Component {
 
   handleAdd = (event, formInputs) => {
     axios
-      .post('/desks', formInputs)
+      .post('https://deskly-backend.herokuapp.com/desks', formInputs)
       .then(jsonDesks =>
         this.setState({
         desks: [jsonDesks.data, ...this.state.desks]
@@ -59,7 +59,7 @@ class App extends React.Component {
 
   handleDelete = deletedDesk => {
     axios
-      .delete('/desks/' + deletedDesk.id)
+      .delete('https://deskly-backend.herokuapp.com/desks/' + deletedDesk.id)
       .then(() => {
         this.setState((state) => {
           const desks = state.desks.filter((desk, index) => {
@@ -75,7 +75,7 @@ class App extends React.Component {
 
   loginUser = (event) => {
     event.preventDefault()
-    axios.post('/sessions',
+    axios.post('https://deskly-backend.herokuapp.com/sessions',
       {
         user_name: this.state.loginUsername,
         user_email: this.state.loginEmail,
@@ -112,7 +112,7 @@ class App extends React.Component {
   }
 
   logoutUser = (event) => {
-    axios.delete('/sessions')
+    axios.delete('https://deskly-backend.herokuapp.com/sessions')
       .then((response) => {
         this.setState({
           loggedIn: false,

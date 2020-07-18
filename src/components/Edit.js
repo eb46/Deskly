@@ -13,7 +13,7 @@ class Edit extends React.Component {
   // UPDATE
   updateDesk = (event) => {
     const id = event.target.getAttribute('id')
-    axios.put('/desks/' + id,
+    axios.put('https://deskly-backend.herokuapp.com/desks/' + id,
       {
         username: this.state.updateUsername,
         image: this.state.updateImage
