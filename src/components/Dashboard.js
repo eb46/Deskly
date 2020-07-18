@@ -3,7 +3,7 @@ import Desks from './Desks.js'
 
 function Dashboard(props) {
   const { desks, handleDelete, handleUpdate } = props
-  // console.log(desks);
+  console.log(props.desks);
   return (
     <div>
       <Desks

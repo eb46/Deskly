@@ -61,8 +61,8 @@ class App extends React.Component {
     axios
       .delete('/desks/' + deletedDesk.id)
       .then(() => {
-        this.setState(state => {
-          const desks = state.desks.filter((desk) => {
+        this.setState((state) => {
+          const desks = state.desks.filter((desk, index) => {
             return desk.id !== deletedDesk.id
           })
           return { desks }
@@ -70,7 +70,6 @@ class App extends React.Component {
       })
       .catch(error => console.log(error)
       )
-      this.getDesks()
       console.log('deleting');
     }
 

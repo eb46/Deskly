@@ -5,8 +5,8 @@ function Desks(props) {
   const { desks, handleDelete, handleUpdate } = props
   return (
     <div>
-      {desks.map(desk => <Desk
-          key={desk.id}
+      {desks.map((desk, index) => <Desk
+          key={index}
           desk={desk}
           handleDelete={handleDelete}
           handleUpdate={handleUpdate}
