@@ -11,7 +11,7 @@ class Login extends React.Component {
   }
 
   componentDidMount = () => {
-    axios.get('https://deskly-backend.herokuapp.com/sessions').then(
+    axios.get('https://cors-anywhere.herokuapp.com/https://deskly-backend.herokuapp.com/sessions').then(
       (response) => {
         this.setState({
           session: response.data,
@@ -21,7 +21,7 @@ class Login extends React.Component {
 
   loginUser = (event) => {
     event.preventDefault()
-    axios.post('https://deskly-backend.herokuapp.com/sessions',
+    axios.post('https://cors-anywhere.herokuapp.com/https://deskly-backend.herokuapp.com/sessions',
       {
         user_name: this.state.loginUsername,
         user_email: this.state.loginEmail,
@@ -58,7 +58,7 @@ class Login extends React.Component {
   }
 
   logoutUser = (event) => {
-    axios.delete('https://deskly-backend.herokuapp.com/sessions')
+    axios.delete('https://cors-anywhere.herokuapp.com/https://deskly-backend.herokuapp.com/sessions')
       .then((response) => {
         this.setState({
           loggedIn: false,

@@ -25,32 +25,22 @@ class App extends React.Component {
   }
 
 
-
-  componentDidMount = () => {
-    this.getDesks()
-    console.log(this.state.desks);
-  }
-
   getDesks = () => {
     axios
-      .get('https://deskly-backend.herokuapp.com/desks')
+      .get('https://cors-anywhere.herokuapp.com/https://deskly-backend.herokuapp.com/desks')
       .then(response => this.setState({
         desks: response.data
       }))
   }
 
-  componentDidMount = () => {
-    axios.get('https://deskly-backend.herokuapp.com/sessions').then(
-      (response) => {
-        this.setState({
-          session: response.data,
-        })
-      })
-    }
+  async componentDidMount(){
+    await this.getDesks()
+    console.log('component did mount route');
+  }
 
   handleAdd = (event, formInputs) => {
     axios
-      .post('https://deskly-backend.herokuapp.com/desks', formInputs)
+      .post('https://cors-anywhere.herokuapp.com/https://deskly-backend.herokuapp.com/desks', formInputs)
       .then(jsonDesks =>
         this.setState({
         desks: [jsonDesks.data, ...this.state.desks]
@@ -58,74 +48,24 @@ class App extends React.Component {
       )
     )
     this.getDesks()
+    console.log('add working');
   }
 
   handleDelete = deletedDesk => {
     axios
-      .delete('https://deskly-backend.herokuapp.com/desks/' + deletedDesk.id)
+      .delete('https://cors-anywhere.herokuapp.com/https://deskly-backend.herokuapp.com/desks/' + deletedDesk.id)
       .then(() => {
         this.setState((state) => {
           const desks = state.desks.filter((desk, index) => {
             return desk.id !== deletedDesk.id
           })
           return { desks }
+          console.log(deletedDesk.id);
         })
       })
       .catch(error => console.log(error)
       )
-      console.log('deleting');
-    }
-
-  loginUser = (event) => {
-    event.preventDefault()
-    axios.post('https://deskly-backend.herokuapp.com/sessions',
-      {
-        user_name: this.state.loginUsername,
-        user_email: this.state.loginEmail,
-        user_password: this.state.loginPassword
-      }
-    ).then((response) => {
-      console.log('=========');
-      console.log(response.data);
-      this.setState({
-        session: response.data,
-        loggedIn: true
-      })
-      console.log(this.state.loggedIn);
-      // console.log(this.state.session);
-    })
-  }
-
-  changeLoginUser = (event) => {
-    this.setState({
-      loginUsername: event.target.value
-    })
-  }
-
-  changeLoginEmail = (event) => {
-    this.setState({
-      loginEmail: event.target.value
-    })
-  }
-
-  changeLoginPassword = (event) => {
-    this.setState({
-      loginPassword: event.target.value
-    })
-  }
-
-  logoutUser = (event) => {
-    axios.delete('https://deskly-backend.herokuapp.com/sessions')
-      .then((response) => {
-        this.setState({
-          loggedIn: false,
-        })
-        // console.log(response.data.destroyed);
-        if (response.data.destroyed === true){
-          console.log('session destroyed');
-        }
-        // console.log(this.state.session.rows[0].user_name);
-      })
+      console.log('deleting working');
     }
 
   render() {
@@ -133,28 +73,12 @@ class App extends React.Component {
       <Router>
         <div className="container">
           <h1 className="title">Deskly</h1>
-          <div>
 
-            { this.state.loggedIn
-              ?
-                <div>
-                  <h3>
-                    Welcome {this.state.session.user.rows[0].user_name}!!!
-                  </h3>
-                  <button onClick={this.logoutUser}>Logout</button>
-                </div>
-              :
-              <form onSubmit={this.loginUser}>
-              <h1>Login</h1>
-                <input type="text" placeholder="email" onKeyUp={this.changeLoginEmail}/>
-                <input type="text" placeholder="password" onKeyUp={this.changeLoginPassword}/>
-                <input type="submit" value="Login"/>
-              </form>
-            }
-          </div>
           <div className="nav-container">
             <Navigation />
-            <Route path="/login" exact component={Login}/>
+            <Route path="/login" exact component={Login}
+
+            />
             <Route path="/signup" component={Signup}/>
           </div>
 
