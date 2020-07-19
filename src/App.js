@@ -66,6 +66,7 @@ class App extends React.Component {
       .catch(error => console.log(error)
       )
       console.log('deleting working');
+      this.getDesks()
     }
 
   render() {
