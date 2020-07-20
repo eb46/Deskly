@@ -23,9 +23,9 @@ class Edit extends React.Component {
         this.setState({
           desks: response.data
         })
+        this.refreshPage()
       }
     )
-    this.refreshPage()
   }
 
   editUsername = (event) => {
