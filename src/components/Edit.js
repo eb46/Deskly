@@ -59,7 +59,7 @@ class Edit extends React.Component {
           ?
             <form id={desks.id} onSubmit={this.updateDesk}>
               <input type="text" placeholder="Name" onKeyUp={this.editUsername} />
-              <input type="text" placeholder="Image URL" onKeyUp={this.editImage} />
+              <input type="text" placeholder="Desk Image URL" onKeyUp={this.editImage} />
               <input type="submit" value="Edit"/>
             </form>
           :

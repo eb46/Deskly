@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+@media only screen and (min-width: 420px) {
+
+  .img-fluid {
+    width: 200px;
+    height: 130px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  .dashboard {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .desk-cards {
+    margin: .5em;
+    width: auto;
+  }
+
+}
+
+@media only screen and (max-width: 420px) {
+
+  .img-fluid {
+    width: auto;
+    height: auto;
+  }
+
+}

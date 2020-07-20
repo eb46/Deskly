@@ -22,8 +22,16 @@ class App extends React.Component {
     user_email: '',
     user_password: '',
     loggedIn: false,
+    showAdd: false
   }
 
+  toggleAdd = () => {
+    this.setState((prevState) => {
+      return {showAdd: !prevState.showAdd}
+    })
+    // console.log('toggle working');
+    // console.log(this.state.showAdd);
+  }
 
   getDesks = () => {
     axios
@@ -75,17 +83,18 @@ class App extends React.Component {
     return(
       <Router>
         <div className="container">
-          <h1 className="title">Deskly</h1>
-
           <div className="nav-container">
-            <Navigation />
-            <Route path="/login" exact component={Login}
-
-            />
+            <Navigation showAdd={this.toggleAdd}/>
+            <Route path="/login" exact component={Login}/>
             <Route path="/signup" component={Signup}/>
           </div>
 
-          <Aside handleSubmit={this.handleAdd} />
+          { this.state.showAdd
+            ?
+              <Aside handleSubmit={this.handleAdd} />
+            :
+              null
+          }
           <Dashboard
             desks={this.state.desks}
             handleDelete={this.handleDelete}

@@ -72,3 +72,10 @@
 //   )
 //   this.refreshPage()
 // }
+
+This button was removed from the desk div.
+<button
+  className="btn btn-dark"
+  onClick={this.toggleForm}>
+  Edit
+</button>

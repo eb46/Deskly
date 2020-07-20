@@ -4,7 +4,7 @@ import Desk from './Desk.js'
 function Desks(props) {
   const { desks, handleDelete, handleUpdate } = props
   return (
-    <div>
+    <div className="dashboard">
       {desks.map((desk, index) => <Desk
           key={index}
           desk={desk}

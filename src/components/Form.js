@@ -47,7 +47,7 @@ class Form extends React.Component {
         <Input
           handleChange={this.handleChange}
           name={'username'}
-          placeholder={'Username'}
+          placeholder={'Name'}
           type={'text'}
           value={this.state.username}
           id={'username'}
@@ -55,7 +55,7 @@ class Form extends React.Component {
         <Input
           handleChange={this.handleChange}
           name={'image'}
-          placeholder={'Image URL'}
+          placeholder={'Desk Image URL'}
           type={'text'}
           value={this.state.image}
           id={'image'}
