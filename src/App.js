@@ -42,13 +42,14 @@ class App extends React.Component {
     axios
       .post('https://cors-anywhere.herokuapp.com/https://deskly-backend.herokuapp.com/desks', formInputs)
       .then(jsonDesks => {
-        console.log(jsonDesks.data);
-        this.setState({
-        desks: [jsonDesks.data, ...this.state.desks]
-        }
-      )}
+          console.log(jsonDesks.data);
+          this.setState({
+          desks: [jsonDesks.data, ...this.state.desks]
+          }
+        )
+      this.getDesks()
+      }
     )
-    // this.getDesks()
     console.log('add working');
   }
 

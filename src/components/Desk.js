@@ -4,7 +4,7 @@ import Edit from './Edit.js'
 
 class Desk extends React.Component {
   state = {
-    showForm: false
+    showForm: false,
   }
 
   toggleForm = () => {
@@ -13,8 +13,14 @@ class Desk extends React.Component {
     })
   }
 
+  errorImage = () => {
+    const defaultImage = "https://cdn.windowsreport.com/wp-content/uploads/2018/05/Error-message.jpg"
+    return defaultImage
+  }
+
   render(){
     const { desk, handleUpdate, handleDelete } = this.props
+    console.log(this.errorImage);
     return(
       <React.Fragment>
       { this.state.showForm
@@ -31,6 +37,7 @@ class Desk extends React.Component {
           <img
             className="img-fluid mx-auto d-block"
             src={desk.image}
+            onerror={this.errorImage}
           />
           <p>
             Submitted by: {desk.username}
