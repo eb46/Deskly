@@ -7,7 +7,8 @@ class Form extends React.Component {
     super(props)
     this.state = {
       username: '',
-      image: ''
+      image: '',
+      modal: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -41,9 +42,19 @@ class Form extends React.Component {
     }
   }
 
+
   render() {
+    const { toggleAdd } = this.props
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form className="modal modal-message"
+        onSubmit={this.handleSubmit}
+      >
+        <div
+          onClick={toggleAdd}
+          className="modal-close-button"
+        >
+          X
+        </div>
         <Input
           handleChange={this.handleChange}
           name={'username'}
@@ -62,7 +73,7 @@ class Form extends React.Component {
         />
         <input
           type="submit"
-          value={this.props.desk ? 'Update' : 'Add'}
+          value={'Add'}
         />
         {this.props.children}
       </form>

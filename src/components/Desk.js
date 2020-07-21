@@ -4,7 +4,9 @@ import Edit from './Edit.js'
 
 class Desk extends React.Component {
   state = {
-    showForm: false
+    showForm: false,
+    errorExists: false,
+    showErrorImage: 'https://i.ytimg.com/vi/z8wrRRR7_qU/maxresdefault.jpg'
   }
 
   toggleForm = () => {
@@ -14,7 +16,9 @@ class Desk extends React.Component {
   }
 
   errorImage = () => {
-
+    this.setState({
+      errorExists: true
+    })
     console.log('error exists');
 
   }
@@ -36,7 +40,13 @@ class Desk extends React.Component {
         <div className="desk-cards">
           <img
             className="img-fluid mx-auto d-block"
-            src={desk.image}
+            src={
+                  this.state.errorExists
+                ?
+                  this.state.showErrorImage
+                :
+                  desk.image
+                }
             onError={this.errorImage}
           />
           <p>

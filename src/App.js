@@ -91,7 +91,12 @@ class App extends React.Component {
 
           { this.state.showAdd
             ?
-              <Aside handleSubmit={this.handleAdd} />
+
+              <Aside
+                toggleAdd={this.toggleAdd}
+                handleSubmit={this.handleAdd}
+              />
+
             :
               null
           }
