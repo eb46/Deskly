@@ -56,6 +56,7 @@ class Form extends React.Component {
           X
         </div>
         <Input
+          className="input-fields"
           handleChange={this.handleChange}
           name={'username'}
           placeholder={'Name'}
@@ -64,6 +65,7 @@ class Form extends React.Component {
           id={'username'}
         />
         <Input
+          className="input-fields"
           handleChange={this.handleChange}
           name={'image'}
           placeholder={'Desk Image URL'}

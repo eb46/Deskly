@@ -1,6 +1,7 @@
 import React from 'react'
 import Form from './Form.js'
 import Edit from './Edit.js'
+import deletebutton from '../images/delete.png'
 
 class Desk extends React.Component {
   state = {
