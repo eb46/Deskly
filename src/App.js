@@ -9,6 +9,7 @@ import Edit from './components/Edit.js'
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import Navigation from './components/Navigation.js'
+import Footer from './components/Footer.js'
 
 
 class App extends React.Component {
@@ -93,6 +94,7 @@ class App extends React.Component {
             ?
 
               <Aside
+                showAdd={this.state.showAdd}
                 toggleAdd={this.toggleAdd}
                 handleSubmit={this.handleAdd}
               />
@@ -109,6 +111,7 @@ class App extends React.Component {
 
 
         </div>
+        <Footer />
       </Router>
     )
   }

@@ -35,7 +35,8 @@ class Form extends React.Component {
     })
     this.setState({
       username: '',
-      image: ''
+      image: '',
+      showAdd: false,
     })
     if (this.props.desk) {
       this.props.toggleForm()
@@ -44,7 +45,8 @@ class Form extends React.Component {
 
 
   render() {
-    const { toggleAdd } = this.props
+    const { toggleAdd, showAdd } = this.props
+
     return(
       <form className="modal modal-message"
         onSubmit={this.handleSubmit}

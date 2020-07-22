@@ -7,7 +7,7 @@ class Desk extends React.Component {
   state = {
     showForm: false,
     errorExists: false,
-    showErrorImage: 'https://i.ytimg.com/vi/z8wrRRR7_qU/maxresdefault.jpg'
+    showErrorImage: 'https://memegenerator.net/img/instances/59989953.jpg'
   }
 
   toggleForm = () => {

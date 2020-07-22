@@ -6,6 +6,7 @@ function Aside(props) {
   return (
     <div>
       <Form
+        showAdd={props.showAdd}
         toggleAdd={props.toggleAdd}
         handleSubmit={props.handleSubmit}
       />

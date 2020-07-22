@@ -115,10 +115,31 @@ nav {
 
 .login-links {
   margin-right: 25px;
-
+  text-decoration: none;
 }
 
+.login-links:visited {
+  color: black;
+}
 
+.login-links:hover {
+  opacity: .5;
+}
+
+input {
+  margin: 1em;
+}
+
+label {
+  margin: .5em;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  box-shadow: 0px .5px 7px .1px rgb(230, 230, 230)
+}
 
 @media only screen and (min-width: 420px) {
 

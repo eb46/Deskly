@@ -12,6 +12,7 @@ function Input(props) {
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        required
       />
     </React.Fragment>
   )
