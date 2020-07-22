@@ -51,7 +51,7 @@ class Desk extends React.Component {
             onError={this.errorImage}
           />
           <p>
-            Submitted by: {desk.username}
+            Creator: {desk.username}
           </p>
           <div className="desk-card-buttons">
             <button
